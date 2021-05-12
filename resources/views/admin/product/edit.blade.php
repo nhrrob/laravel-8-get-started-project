@@ -14,7 +14,7 @@
                     </div>
                     @endif
 
-                    <form method="POST" action='{{ route("products.update", $product->id) }}' enctype="multipart/form-data">
+                    <form method="POST" action='{{ route("admin.products.update", $product->id) }}' enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a class="btn btn-danger mr-1" href='{{ route("products.index") }}' type="submit">Cancel</a>
+                            <a class="btn btn-danger mr-1" href='{{ route("admin.products.index") }}' type="submit">Cancel</a>
                             <button class="btn btn-success" type="submit">Save</button>
                         </div>
                     </form>

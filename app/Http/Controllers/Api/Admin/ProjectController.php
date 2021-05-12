@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProjectResource;
 
-class ProductController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
-        return ProductResource::collection($products);
+        $projects = Project::latest()->paginate(10);
+        return ProjectResource::collection($projects);
     }
 
     /**
@@ -39,29 +39,29 @@ class ProductController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $product = Product::create($data);
-        return new ProductResource($product);
+        $project = Project::create($data);
+        return new ProjectResource($project);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Project $project)
     {
-        return new ProductResource($product);
+        return new ProjectResource($project);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Project $project)
     {
         $data = $request->all();
 
@@ -73,20 +73,20 @@ class ProductController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $product->update($request->all());
-        return new ProductResource($product);
+        $project->update($request->all());
+        return new ProjectResource($project);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Project $project)
     {
-        $product->delete();
-        return new ProductResource($product);
+        $project->delete();
+        return new ProjectResource($project);
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductController extends Controller
      */
     public function search($title)
     {
-        $products = Product::where('title', 'like', '%'.$title.'%')->get();
-        return ProductResource::collection($products);
+        $projects = Project::where('title', 'like', '%'.$title.'%')->get();
+        return ProjectResource::collection($projects);
     }
 }

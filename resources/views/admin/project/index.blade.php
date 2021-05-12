@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Products') }}</div>
+                <div class="card-header">{{ __('Projects') }}</div>
 
                 <div class="card-body">
                     @if (session('message'))
@@ -14,7 +14,7 @@
                     </div>
                     @endif
 
-                    <p><a class="btn btn-success" href='{{ route("products.create") }}'><i class="fa fa-plus"></i> Create Product</a></p>
+                    <p><a class="btn btn-success" href='{{ route("admin.projects.create") }}'><i class="fa fa-plus"></i> Create Project</a></p>
 
                     <table class="table table-bordered">
                         <thead>
@@ -29,20 +29,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($products as $product)
+                            @forelse($projects as $project)
                             <tr>
                                 <td>
-                                    {{ $product->title ?? 'N/A' }}
+                                    {{ $project->title ?? 'N/A' }}
                                 </td>
 
                                 <td>
-                                    {{ optional($product->created_at)->diffForHumans() }}
+                                    {{ optional($project->created_at)->diffForHumans() }}
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-success d-block mb-2" href='{{ route("products.edit", $product->id) }}'><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-success d-block mb-2" href='{{ route("admin.projects.edit", $project->id) }}'><i class="fa fa-pencil"></i> Edit</a>
 
-                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                    <form method="POST" action='{{ route("admin.projects.destroy", $project->id) }}'>
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 

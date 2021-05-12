@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Exception;
@@ -11,12 +12,12 @@ class ProductController extends Controller
     public function index()
     {
         $data['products'] = Product::latest()->get();
-        return view('product.index', $data);
+        return view('admin.product.index', $data);
     }
 
     public function create()
     {
-        return view('product.create');
+        return view('admin.product.create');
     }
 
     public function store(ProductRequest $request)
@@ -29,7 +30,7 @@ class ProductController extends Controller
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
 
         } catch (Exception $e) {
             $notification = array(
@@ -37,7 +38,7 @@ class ProductController extends Controller
                 'alert-type' => 'error'
             );
 
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
         }
     }
 
@@ -49,7 +50,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $data['product'] = $product;
-        return view('product.edit', $data);
+        return view('admin.product.edit', $data);
     }
 
     public function update(ProductRequest $request, Product $product)
@@ -62,13 +63,13 @@ class ProductController extends Controller
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
         } catch (Exception $e) {
             $notification = array(
                 'message' => $e->getMessage(),
                 'alert-type' => 'error'
             );
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
         }
     }
 
@@ -82,13 +83,13 @@ class ProductController extends Controller
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
         } catch (Exception $e) {
             $notification = array(
                 'message' => $e->getMessage(),
                 'alert-type' => 'error'
             );
-            return redirect()->route('products.index')->with($notification);
+            return redirect()->route('admin.products.index')->with($notification);
         }
     }
 }

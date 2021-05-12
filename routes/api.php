@@ -15,17 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
-Route::post('register', '\App\Http\Controllers\Api\AuthController@register');
-Route::post('login', '\App\Http\Controllers\Api\AuthController@login');
+Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
+  Route::post('register', 'AuthController@register');
+  Route::post('login', 'AuthController@login');
 
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::post('/logout', '\App\Http\Controllers\Api\AuthController@logout');
+  Route::group(['middleware' => ['auth:api']], function () {
+    Route::post('/logout', 'AuthController@logout');
+  });
 });
 
-Route::group(['middleware' => ['auth:api']], function () { 
-  Route::get('/products/search/{title}', '\App\Http\Controllers\Api\ProductController@search'); 
-  Route::apiResource('products', '\App\Http\Controllers\Api\ProductController'); 
+Route::group([ 'namespace'=> 'App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api'] ], function () {
+  Route::get('/products/search/{title}', 'ProductController@search');
+  Route::apiResource('products', 'ProductController');
+
+  Route::get('/projects/search/{title}', 'ProjectController@search'); 
+  Route::apiResource('projects', 'ProjectController'); 
 });
