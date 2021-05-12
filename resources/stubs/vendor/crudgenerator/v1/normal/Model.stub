@@ -1,0 +1,10 @@
+<?php
+
+namespace App{{modelFolder}};
+
+use Illuminate\Database\Eloquent\Model;
+
+class {{modelPascal}} extends Model
+{
+    protected $guarded = ['id'];
+}
