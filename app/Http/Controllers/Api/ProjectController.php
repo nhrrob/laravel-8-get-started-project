@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api{{adminNamespace}};
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App{{modelFolder}}\{{modelPascal}};
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\{{modelPascal}}Resource;
+use App\Http\Resources\ProjectResource;
 
-class {{modelPascal}}Controller extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class {{modelPascal}}Controller extends Controller
      */
     public function index()
     {
-        ${{modelCamelPlural}} = {{modelPascal}}::latest()->paginate(10);
-        return {{modelPascal}}Resource::collection(${{modelCamelPlural}});
+        $projects = Project::latest()->paginate(10);
+        return ProjectResource::collection($projects);
     }
 
     /**
@@ -39,29 +39,29 @@ class {{modelPascal}}Controller extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        ${{modelCamel}} = {{modelPascal}}::create($data);
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $project = Project::create($data);
+        return new ProjectResource($project);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show({{modelPascal}} ${{modelCamel}})
+    public function show(Project $project)
     {
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        return new ProjectResource($project);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, {{modelPascal}} ${{modelCamel}})
+    public function update(Request $request, Project $project)
     {
         $data = $request->all();
 
@@ -73,20 +73,20 @@ class {{modelPascal}}Controller extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        ${{modelCamel}}->update($request->all());
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $project->update($request->all());
+        return new ProjectResource($project);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{modelPascal}} ${{modelCamel}})
+    public function destroy(Project $project)
     {
-        ${{modelCamel}}->delete();
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $project->delete();
+        return new ProjectResource($project);
     }
 
     /**
@@ -97,7 +97,7 @@ class {{modelPascal}}Controller extends Controller
      */
     public function search($title)
     {
-        ${{modelCamelPlural}} = {{modelPascal}}::where('title', 'like', '%'.$title.'%')->get();
-        return {{modelPascal}}Resource::collection(${{modelCamelPlural}});
+        $projects = Project::where('title', 'like', '%'.$title.'%')->get();
+        return ProjectResource::collection($projects);
     }
 }

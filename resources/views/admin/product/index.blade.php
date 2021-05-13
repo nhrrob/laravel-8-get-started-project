@@ -42,7 +42,7 @@
                                 <td>
                                     <a class="btn btn-success d-block mb-2" href='{{ route("admin.products.edit", $product->id) }}'><i class="fa fa-pencil"></i> Edit</a>
 
-                                    <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}">
+                                    <form method="POST" action='{{ route("admin.products.destroy", $product->id) }}'>
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 

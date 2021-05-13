@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api{{adminNamespace}};
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App{{modelFolder}}\{{modelPascal}};
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\{{modelPascal}}Resource;
+use App\Http\Resources\ProductResource;
 
-class {{modelPascal}}Controller extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class {{modelPascal}}Controller extends Controller
      */
     public function index()
     {
-        ${{modelCamelPlural}} = {{modelPascal}}::latest()->paginate(10);
-        return {{modelPascal}}Resource::collection(${{modelCamelPlural}});
+        $products = Product::latest()->paginate(10);
+        return ProductResource::collection($products);
     }
 
     /**
@@ -39,29 +39,29 @@ class {{modelPascal}}Controller extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        ${{modelCamel}} = {{modelPascal}}::create($data);
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $product = Product::create($data);
+        return new ProductResource($product);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show({{modelPascal}} ${{modelCamel}})
+    public function show(Product $product)
     {
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        return new ProductResource($product);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, {{modelPascal}} ${{modelCamel}})
+    public function update(Request $request, Product $product)
     {
         $data = $request->all();
 
@@ -73,20 +73,20 @@ class {{modelPascal}}Controller extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        ${{modelCamel}}->update($request->all());
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $product->update($request->all());
+        return new ProductResource($product);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\{{modelPascal}}  ${{modelCamel}}
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{modelPascal}} ${{modelCamel}})
+    public function destroy(Product $product)
     {
-        ${{modelCamel}}->delete();
-        return new {{modelPascal}}Resource(${{modelCamel}});
+        $product->delete();
+        return new ProductResource($product);
     }
 
     /**
@@ -97,7 +97,7 @@ class {{modelPascal}}Controller extends Controller
      */
     public function search($title)
     {
-        ${{modelCamelPlural}} = {{modelPascal}}::where('title', 'like', '%'.$title.'%')->get();
-        return {{modelPascal}}Resource::collection(${{modelCamelPlural}});
+        $products = Product::where('title', 'like', '%'.$title.'%')->get();
+        return ProductResource::collection($products);
     }
 }

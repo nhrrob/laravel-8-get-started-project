@@ -19,8 +19,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group([ 'namespace'=> 'App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
+Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
   Route::resource('products', 'ProductController'); 
-  Route::resource('projects', 'ProjectController'); 
+});
 
+Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
+  Route::resource('products', 'ProductController'); 
+});
+
+Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
+  Route::resource('projects', 'ProjectController'); 
+});
+
+Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
+  Route::resource('projects', 'ProjectController'); 
 });
