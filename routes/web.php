@@ -19,18 +19,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Backend : Admin Panel
+Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
+
+  Route::get('/', function () {
+    return redirect(route('admin.dashboard'));
+  });
+  
+  //naming convention ignored for dashboard as /admin/dashboards sounds inappropriate!
+  Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
+  
+  Route::resource('products', 'ProductController'); 
+  Route::resource('projects', 'ProjectController'); 
+
+});
+
+//Frontend
 Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
   Route::resource('products', 'ProductController'); 
-});
-
-Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
-  Route::resource('products', 'ProductController'); 
-});
-
-Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
   Route::resource('projects', 'ProjectController'); 
-});
 
-Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
-  Route::resource('projects', 'ProjectController'); 
 });

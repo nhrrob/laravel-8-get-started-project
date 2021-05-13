@@ -9,6 +9,11 @@ use Exception;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        //permission group = product (e.x. product list, product edit)
+        parent::__construct('product'); 
+    }
     public function index()
     {
         $data['products'] = Product::latest()->get();
