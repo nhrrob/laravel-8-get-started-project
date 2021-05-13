@@ -5,7 +5,7 @@
 <a href="https://github.com/nhrrob/laravel-get-started-project/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/nhrrob/laravel-get-started-project"></a>
 <a href="https://github.com/nhrrob/laravel-get-started-project/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/nhrrob/laravel-get-started-project"></a>
 <a href="https://github.com/nhrrob/laravel-get-started-project/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/nhrrob/laravel-get-started-project"></a>
-
+<a href="https://github.com/nhrrob/laravel-get-started-project/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/nhrrob/laravel-get-started-project"></a>
 </p>
 
 ## Laravel Get Started Project
