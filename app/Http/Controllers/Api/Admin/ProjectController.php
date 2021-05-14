@@ -10,6 +10,11 @@ use App\Http\Resources\ProjectResource;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct('project', 1);
+    }
+
     /**
      * Display a listing of the resource.
      *

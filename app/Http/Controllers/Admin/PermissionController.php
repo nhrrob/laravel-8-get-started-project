@@ -9,6 +9,12 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct('permission');
+    }
+        
+
     public function index()
     {
         $data['permissions'] = Permission::latest()->paginate(10);

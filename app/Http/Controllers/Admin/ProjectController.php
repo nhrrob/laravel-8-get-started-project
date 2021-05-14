@@ -13,6 +13,7 @@ class ProjectController extends Controller
     {
         parent::__construct('project'); //spatie permission
     }
+    
     public function index()
     {
         $data['projects'] = Project::latest()->get();

@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\PermissionResource;
-use Spatie\Permission\Models\Permission;
+use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
 
-class PermissionController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
-        parent::__construct('permission', 1);
+        parent::__construct('user', 1);
     }
 
     /**
@@ -22,8 +23,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::latest()->paginate(10);
-        return PermissionResource::collection($permissions);
+        $users = User::latest()->paginate(10);
+        return UserResource::collection($users);
     }
 
     /**
@@ -34,64 +35,69 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        $defaultPassword = $this->getDefaultPassword();
+        $request['password'] = Hash::make("$defaultPassword");
+
         $data = $request->all();
 
         $validator = Validator::make($data, [
             'name' => 'required',
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $permission = Permission::create($data);
-        return new PermissionResource($permission);
+        $user = User::create($request->except(['role']));
+        return new UserResource($user);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permission)
+    public function show(User $user)
     {
-        return new PermissionResource($permission);
+        return new UserResource($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, User $user)
     {
         $data = $request->all();
 
         $validator = Validator::make($data, [
             'name' => 'required',
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $permission->update($request->all());
-        return new PermissionResource($permission);
+        $user->update($request->except(['password', 'role']));
+        return new UserResource($user);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy(User $user)
     {
-        $permission->delete();
-        return new PermissionResource($permission);
+        $user->delete();
+        return new UserResource($user);
     }
 
     /**
@@ -102,7 +108,7 @@ class PermissionController extends Controller
      */
     public function search($name)
     {
-        $permissions = Permission::where('name', 'like', '%'.$name.'%')->get();
-        return PermissionResource::collection($permissions);
+        $users = User::where('name', 'like', '%'.$name.'%')->get();
+        return UserResource::collection($users);
     }
 }

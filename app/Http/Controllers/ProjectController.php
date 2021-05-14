@@ -9,6 +9,11 @@ use Exception;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct('project');
+    }
+
     public function index()
     {
         $data['projects'] = Project::latest()->get();

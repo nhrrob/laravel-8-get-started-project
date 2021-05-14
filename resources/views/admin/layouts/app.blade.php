@@ -69,10 +69,10 @@
                                 <a class="dropdown-item" href="{{ route('admin.permissions.index') }}">
                                     {{ __('Permissions') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.products.index') }}">
+                                <a class="dropdown-item" href="{{ route('admin.roles.index') }}">
                                     {{ __('Roles') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.products.index') }}">
+                                <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                     {{ __('Users') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.products.index') }}">

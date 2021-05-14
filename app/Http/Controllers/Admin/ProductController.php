@@ -14,6 +14,7 @@ class ProductController extends Controller
         //permission group = product (e.x. product list, product edit)
         parent::__construct('product'); 
     }
+    
     public function index()
     {
         $data['products'] = Product::latest()->get();

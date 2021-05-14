@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\PermissionResource;
-use Spatie\Permission\Models\Permission;
+use App\Http\Resources\RoleResource;
+use Spatie\Permission\Models\Role;
 
-class PermissionController extends Controller
+class RoleController extends Controller
 {
     public function __construct()
     {
-        parent::__construct('permission', 1);
+        parent::__construct('role', 1);
     }
 
     /**
@@ -22,8 +22,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::latest()->paginate(10);
-        return PermissionResource::collection($permissions);
+        $roles = Role::latest()->paginate(10);
+        return RoleResource::collection($roles);
     }
 
     /**
@@ -44,29 +44,29 @@ class PermissionController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $permission = Permission::create($data);
-        return new PermissionResource($permission);
+        $role = Role::create($data);
+        return new RoleResource($role);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permission)
+    public function show(Role $role)
     {
-        return new PermissionResource($permission);
+        return new RoleResource($role);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, Role $role)
     {
         $data = $request->all();
 
@@ -78,20 +78,20 @@ class PermissionController extends Controller
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $permission->update($request->all());
-        return new PermissionResource($permission);
+        $role->update($request->all());
+        return new RoleResource($role);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy(Role $role)
     {
-        $permission->delete();
-        return new PermissionResource($permission);
+        $role->delete();
+        return new RoleResource($role);
     }
 
     /**
@@ -102,7 +102,7 @@ class PermissionController extends Controller
      */
     public function search($name)
     {
-        $permissions = Permission::where('name', 'like', '%'.$name.'%')->get();
-        return PermissionResource::collection($permissions);
+        $roles = Role::where('name', 'like', '%'.$name.'%')->get();
+        return RoleResource::collection($roles);
     }
 }

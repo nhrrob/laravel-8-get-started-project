@@ -9,6 +9,11 @@ use Exception;
 
 class {{modelPascal}}Controller extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct('{{modelSnake}}');
+    }
+
     public function index()
     {
         $data['{{modelCamelPlural}}'] = {{modelPascal}}::latest()->paginate(10);

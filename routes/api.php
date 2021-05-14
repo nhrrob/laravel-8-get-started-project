@@ -27,27 +27,31 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
   });
 });
 
-Route::group([ 'namespace'=> '\App\Http\Controllers\Api', 'prefix' => '',  'as'=>'', 'middleware' => ['auth:api']], function () { 
-  Route::get('/products/search/{title}', 'ProductController@search')->name('products.search'); 
-  Route::apiResource('products', 'ProductController'); 
-});
-
+//Backend (/admin prefix)
 Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api']], function () { 
   Route::get('/products/search/{title}', 'ProductController@search')->name('products.search'); 
   Route::apiResource('products', 'ProductController'); 
-});
 
-Route::group([ 'namespace'=> '\App\Http\Controllers\Api', 'prefix' => '',  'as'=>'', 'middleware' => ['auth:api']], function () { 
   Route::get('/projects/search/{title}', 'ProjectController@search')->name('projects.search'); 
   Route::apiResource('projects', 'ProjectController'); 
-});
 
-Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api']], function () { 
-  Route::get('/projects/search/{title}', 'ProjectController@search')->name('projects.search'); 
-  Route::apiResource('projects', 'ProjectController'); 
-});
-
-Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api']], function () { 
-  Route::get('/permissions/search/{title}', 'PermissionController@search')->name('permissions.search'); 
+  Route::get('/permissions/search/{name}', 'PermissionController@search')->name('permissions.search'); 
   Route::apiResource('permissions', 'PermissionController'); 
+
+  Route::get('/roles/search/{name}', 'RoleController@search')->name('roles.search'); 
+  Route::apiResource('roles', 'RoleController'); 
+});
+
+//Frontend (no /admin prefix)
+Route::group([ 'namespace'=> '\App\Http\Controllers\Api', 'prefix' => '',  'as'=>'', 'middleware' => ['auth:api']], function () { 
+  Route::get('/products/search/{title}', 'ProductController@search')->name('products.search'); 
+  Route::apiResource('products', 'ProductController'); 
+
+  Route::get('/projects/search/{title}', 'ProjectController@search')->name('projects.search'); 
+  Route::apiResource('projects', 'ProjectController'); 
+});
+
+Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api']], function () { 
+  Route::get('/users/search/{title}', 'UserController@search')->name('users.search'); 
+  Route::apiResource('users', 'UserController'); 
 });

@@ -31,6 +31,8 @@ Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',
   
   Route::resource('products', 'ProductController'); 
   Route::resource('projects', 'ProjectController'); 
+  Route::resource('permissions', 'PermissionController'); 
+  Route::resource('roles', 'RoleController'); 
 
 });
 
@@ -38,9 +40,8 @@ Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',
 Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
   Route::resource('products', 'ProductController'); 
   Route::resource('projects', 'ProjectController'); 
-
 });
 
 Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
-  Route::resource('permissions', 'PermissionController'); 
+  Route::resource('users', 'UserController'); 
 });

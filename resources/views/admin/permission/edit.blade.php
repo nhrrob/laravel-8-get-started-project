@@ -27,7 +27,6 @@
 
                         <div class="form-group">
                             <input class="form-control" type="text" name="group_name" placeholder="Group Name" value="{{$permission->group_name}}">
-                            <input type="hidden" class="form-control" name="guard_name" value="{{$permission->guard_name}}">
                             @error('group_name')
                             <label class="text-danger">{{ $message }}</label>
                             @enderror

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Permission') }}</div>
+                <div class="card-header">{{ __('Create Role') }}</div>
 
                 <div class="card-body">
 
@@ -15,25 +15,18 @@
                     </div>
                     @endif
 
-                    <form method="POST" action='{{ route("admin.permissions.store") }}' enctype="multipart/form-data">
+                    <form method="POST" action='{{ route("admin.roles.store") }}' enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                            <input class="form-control" type="text" name="name" placeholder="Name">
                             @error('name')
                             <label class="text-danger">{{ $message }}</label>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="group_name" placeholder="Group Name" value="{{ old('group_name') }}">
-                            @error('group_name')
-                            <label class="text-danger">{{ $message }}</label>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <a class="btn btn-danger mr-1" href='{{ route("admin.permissions.index") }}' type="submit">Cancel</a>
+                            <a class="btn btn-danger mr-1" href='{{ route("admin.roles.index") }}' type="submit">Cancel</a>
                             <button class="btn btn-success" type="submit">Save</button>
                         </div>
                     </form>
