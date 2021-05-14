@@ -22,6 +22,11 @@
                                 <th>
                                     Name
                                 </th>
+
+                                <th>
+                                    Permissions
+                                </th>
+
                                 <th>
                                     Created
                                 </th>
@@ -33,6 +38,12 @@
                             <tr>
                                 <td>
                                     {{ $role->name ?? 'N/A' }}
+                                </td>
+
+                                <td>
+                                    @foreach($role->permissions as $perm)
+                                    <span class="badge badge-info mb-1 p-1 text-white" style="font-size: 12px;">{{$perm->name}}</span>
+                                    @endforeach
                                 </td>
 
                                 <td>

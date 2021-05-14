@@ -45,6 +45,8 @@ class RoleController extends Controller
         }
 
         $role = Role::create($data);
+        $this->managePermissions($request, $role);
+
         return new RoleResource($role);
     }
 
@@ -79,6 +81,8 @@ class RoleController extends Controller
         }
 
         $role->update($request->all());
+        $this->managePermissions($request, $role);
+
         return new RoleResource($role);
     }
 

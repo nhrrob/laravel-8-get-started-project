@@ -19,6 +19,16 @@ trait GlobalTrait
         $user->syncRoles([$request->role]);
     }
 
+    //Uses Spatie Laravel Permission
+    public function managePermissions($request, $role)
+    {
+        $permissions = $request->permissions;
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+    }
+
     public function managePassword($request, $user)
     {
         if ($request->password != '') {

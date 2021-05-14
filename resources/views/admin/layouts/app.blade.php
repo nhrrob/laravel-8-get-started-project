@@ -23,7 +23,7 @@
     <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
 
     @yield('header')
-    @yield('css')
+    @yield('styles')
 
 </head>
 
@@ -108,7 +108,7 @@
     </div>
 
     <script src="{{ asset('js/script.js') }}"></script>
-    @stack('js')
+    @stack('scripts')
 
 </body>
 
