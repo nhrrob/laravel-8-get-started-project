@@ -1,11 +1,11 @@
-@extends('{{adminRoutePrefix}}layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('{{modelTitlePlural}}') }}</div>
+                <div class="card-header">{{ __('Permissions') }}</div>
 
                 <div class="card-body">
                     @if (session('message'))
@@ -14,13 +14,16 @@
                     </div>
                     @endif
 
-                    <p><a class="btn btn-success" href='{{ route("{{adminRoutePrefix}}{{modelKebabPlural}}.create") }}'><i class="fa fa-plus"></i> Create {{modelTitle}}</a></p>
+                    <p><a class="btn btn-success" href='{{ route("admin.permissions.create") }}'><i class="fa fa-plus"></i> Create Permission</a></p>
 
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>
-                                    Title
+                                    Name
+                                </th>
+                                <th>
+                                    Group Name
                                 </th>
                                 <th>
                                     Created
@@ -29,20 +32,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse(${{modelCamelPlural}} as ${{modelCamel}})
+                            @forelse($permissions as $permission)
                             <tr>
                                 <td>
-                                    {{ ${{modelCamel}}->title ?? 'N/A' }}
+                                    {{ $permission->name ?? 'N/A' }}
+                                </td>
+                                
+                                <td>
+                                    {{ $permission->group_name ?? 'N/A' }}
                                 </td>
 
                                 <td>
-                                    {{ optional(${{modelCamel}}->created_at)->diffForHumans() }}
+                                    {{ optional($permission->created_at)->diffForHumans() }}
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-success d-block mb-2" href='{{ route("{{adminRoutePrefix}}{{modelKebabPlural}}.edit", ${{modelCamel}}->id) }}'><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-success d-block mb-2" href='{{ route("admin.permissions.edit", $permission->id) }}'><i class="fa fa-pencil"></i> Edit</a>
 
-                                    <form method="POST" action='{{ route("{{adminRoutePrefix}}{{modelKebabPlural}}.destroy", ${{modelCamel}}->id) }}'>
+                                    <form method="POST" action='{{ route("admin.permissions.destroy", $permission->id) }}'>
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
@@ -61,10 +68,10 @@
                             @endforelse
                         </tbody>
                     </table>
-
+                    
                     <!-- Pagination  -->
                     <div class="d-flex justify-content-center">
-                        {{ ${{modelCamelPlural}}->links() }}
+                        {{ $permissions->links() }}
                     </div>
                 </div>
             </div>

@@ -46,3 +46,8 @@ Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'adm
   Route::get('/projects/search/{title}', 'ProjectController@search')->name('projects.search'); 
   Route::apiResource('projects', 'ProjectController'); 
 });
+
+Route::group([ 'namespace'=> '\App\Http\Controllers\Api\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => ['auth:api']], function () { 
+  Route::get('/permissions/search/{title}', 'PermissionController@search')->name('permissions.search'); 
+  Route::apiResource('permissions', 'PermissionController'); 
+});
