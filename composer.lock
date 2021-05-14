@@ -2007,16 +2007,16 @@
         },
         {
             "name": "nhrrob/crudgenerator",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nhrrob/crudgenerator.git",
-                "reference": "8a1229d761b5bbe48a00c4e8ec2fc73bbe3f188f"
+                "reference": "b17f07846dc3e8e8c0983cec44d4d4752bcb5777"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nhrrob/crudgenerator/zipball/8a1229d761b5bbe48a00c4e8ec2fc73bbe3f188f",
-                "reference": "8a1229d761b5bbe48a00c4e8ec2fc73bbe3f188f",
+                "url": "https://api.github.com/repos/nhrrob/crudgenerator/zipball/b17f07846dc3e8e8c0983cec44d4d4752bcb5777",
+                "reference": "b17f07846dc3e8e8c0983cec44d4d4752bcb5777",
                 "shasum": ""
             },
             "type": "library",
@@ -2045,9 +2045,9 @@
             "description": "This package provides an artisan command to generate a basic crud",
             "support": {
                 "issues": "https://github.com/nhrrob/crudgenerator/issues",
-                "source": "https://github.com/nhrrob/crudgenerator/tree/v2.2.1"
+                "source": "https://github.com/nhrrob/crudgenerator/tree/v2.2.2"
             },
-            "time": "2021-05-13T15:23:07+00:00"
+            "time": "2021-05-14T18:57:53+00:00"
         },
         {
             "name": "nikic/php-parser",
