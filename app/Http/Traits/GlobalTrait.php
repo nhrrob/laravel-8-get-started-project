@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 
 trait GlobalTrait
 {
-
     public function getDefaultPassword(): string
     {
         $defaultPassword = 'password';

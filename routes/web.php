@@ -30,18 +30,13 @@ Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
   
   Route::resource('products', 'ProductController'); 
-  Route::resource('projects', 'ProjectController'); 
   Route::resource('permissions', 'PermissionController'); 
   Route::resource('roles', 'RoleController'); 
+  Route::resource('users', 'UserController'); 
 
 });
 
 //Frontend
 Route::group([ 'namespace'=> '\App\Http\Controllers', 'prefix' => '',  'as'=>'', 'middleware' => 'auth' ], function () { 
   Route::resource('products', 'ProductController'); 
-  Route::resource('projects', 'ProjectController'); 
-});
-
-Route::group([ 'namespace'=> '\App\Http\Controllers\Admin', 'prefix' => 'admin',  'as'=>'admin.', 'middleware' => 'auth' ], function () { 
-  Route::resource('users', 'UserController'); 
 });
