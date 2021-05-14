@@ -10,7 +10,7 @@
 ## Laravel Get Started Project
 
 Laravel Get Started Project is a basic crud app built with laravel 8. In this app a basic product crud created. 
-Features include:
+<br>Features include:
 
 - Laravel ui package (```composer require laravel/ui:^2.4```)
 - Laravel default auth (```php artisan ui vue --auth```)
@@ -19,6 +19,11 @@ Features include:
 - Spatie Laravel Permission
 - Role and Permission Seeder
 - Admin file structure
+- Role Crud (Web and Api)
+- Permission Crud (Web and Api)
+- User Crud (Web and Api)
+- Product Crud (Web and Api - Frontend and Backend)
+- Permission Assigning to Role
 
 This app created to help developers to get started with their laravel applications.
 
