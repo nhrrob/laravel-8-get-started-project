@@ -7,9 +7,9 @@
 <a href="https://github.com/nhrrob/laravel-get-started-project/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/nhrrob/laravel-get-started-project"></a>
 </p>
 
-## Laravel Get Started Project
+## Laravel 8 Get Started Project
 
-Laravel Get Started Project is a basic crud app built with laravel 8. In this app a basic product crud created. 
+Laravel 8 Get Started Project is a basic crud app built with laravel 8. In this app a basic product crud created. 
 <br>Features include:
 
 - Laravel ui package (```composer require laravel/ui:^2.4```)
@@ -30,7 +30,7 @@ This app created to help developers to get started with their laravel applicatio
 
 ## Note
 
-- Step by Step instructions : <a href="https://github.com/nhrrob/laravelwiki">Laravel Wiki (Topic - Laravel From Scratch - Laravel Get Started Project)</a>
+- Step by Step instructions : <a href="https://github.com/nhrrob/laravelwiki">Laravel Wiki (Topic - Laravel From Scratch - Laravel 8 Get Started Project)</a>
 - To see product crud: browse - yoursiteurl/products 
   <br>(Ex. http://127.0.0.1:8000/products)
 - Demo User (database/seeders/DatabaseSeeder.php): 
@@ -39,7 +39,7 @@ This app created to help developers to get started with their laravel applicatio
 
 ## License
 
-The Laravel Get Started Project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel 8 Get Started Project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
 ## Contact
