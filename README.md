@@ -1,10 +1,10 @@
 <p align="center"><a href="https://nazmulrobin.com" target="_blank"><img src="http://nazmulrobin.com/images/nhrblog-logo-white.png" width="400"></a></p>
 
 <p align="center">
-<a href="https://github.com/nhrrob/laravel-get-started-project/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/nhrrob/laravel-get-started-project"></a>
-<a href="https://github.com/nhrrob/laravel-get-started-project/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/nhrrob/laravel-get-started-project"></a>
-<a href="https://github.com/nhrrob/laravel-get-started-project/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/nhrrob/laravel-get-started-project"></a>
-<a href="https://github.com/nhrrob/laravel-get-started-project/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/nhrrob/laravel-get-started-project"></a>
+<a href="https://github.com/nhrrob/laravel-8-get-started-project/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/nhrrob/laravel-get-started-project"></a>
+<a href="https://github.com/nhrrob/laravel-8-get-started-project/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/nhrrob/laravel-get-started-project"></a>
+<a href="https://github.com/nhrrob/laravel-8-get-started-project/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/nhrrob/laravel-get-started-project"></a>
+<a href="https://github.com/nhrrob/laravel-8-get-started-project/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/nhrrob/laravel-get-started-project"></a>
 </p>
 
 ## Laravel 8 Get Started Project
