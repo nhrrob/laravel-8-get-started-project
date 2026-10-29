@@ -9,7 +9,7 @@
 
 ## Laravel 8 Get Started Project
 
-Laravel 8 Get Started Project is a basic crud app built with laravel 8. In this app a basic product crud created. 
+Laravel 8 Get Started Project is a basic crud app built with laravel 8, and now runs on Laravel 13. In this app a basic product crud created. 
 <br>Features include:
 
 - Laravel ui package (```composer require laravel/ui:^2.4```)
